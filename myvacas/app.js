@@ -41,7 +41,7 @@ function checkDatesInvalid(startDate, endDate){
 //add the storage key as an app-wide constant
 const STORAGE_KEY = "vaca_tracker";
 
-function storeNewvacation(startDate, endDate){
+function storeNewVacation(startDate, endDate){
     //get data from storage
     const vacations = getAllStoredVacations();//returns array of strings
     //add the new vacation at the end of the array
