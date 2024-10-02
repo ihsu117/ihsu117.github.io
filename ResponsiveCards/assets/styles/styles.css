@@ -1,0 +1,166 @@
+.html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+
+    height: 10vh;
+    overflow: hidden;
+
+    padding: 1.5vw 6vw;
+    background-color: white;
+    z-index: 100;
+}
+
+#logo {
+    height: 100%;
+}
+
+h1 {
+    padding-left: 6vw;
+    font-weight: 800;
+}
+
+.cardsCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 6vw;
+    gap: 6vw;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    height: 280px;
+    width: 100%;
+
+    background-color: rgb(240, 240, 240);
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.cardImg {
+    position: relative;
+    height: 80%;
+    overflow: hidden;
+}
+
+picture > img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+}
+
+.cardImg > img {
+    display: block;
+    width: 100%;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    margin: auto;
+}
+
+.cardImg::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(240, 240, 240, 1) 100%);
+}
+
+.cardInfo {
+    height: 15%;
+    padding: 2.5vw;
+}
+
+.cardInfo > p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.cardName {
+    position: absolute;
+    bottom: 21%;
+    margin: 0;
+
+    padding: 0 2.5vw;
+}
+
+@media screen and (min-width: 700px) {
+    .cardsCont {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: max(25px, 1vw)
+    }
+
+    .card {
+        height: 500px;
+        width: 48%;
+    }
+
+    .cardImg > img {
+        height: 100%;
+        width: auto;
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    nav {
+        justify-content: start;
+    }
+
+    .card {
+        height: 450px;
+    }
+
+    .cardImg > img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .cardName {
+        bottom: 23%;
+        padding-bottom: 1vh;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .cardsCont {
+        justify-content: start;
+        gap: max(25px, 2vw);
+    }
+
+    .card {
+        width: 30%;
+    }
+}

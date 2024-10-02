@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/styles/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <img id="logo" src="assets/images/moma.svg" alt="logo"/>
+    </nav>
+    <h1>Exhibitions</h1>
+    <section class="cardsCont">
+        <div class="card">
+            <div class="cardImg">
+                <picture>
+                    <source media="(max-width: 700px)" srcset="assets/images/paintparisPhone.jpg">
+                    <source media="(max-width: 1024px)" srcset="assets/images/paintparisTablet.jpg">
+                    <img src="assets/images/paintparis.jpg" alt="Painting in Paris Collection"/>
+                </picture>
+            </div>
+            <h2 class="cardName">Painting in Paris</h2>
+            <div class="cardInfo">
+                <p>Jan 19 - Mar 2, 1930<br/>Art Direction</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="cardImg">
+                <img
+                    srcset="assets/images/paintsculptures410.jpg 410w,
+                    assets/images/paintsculptures910.jpg 910w,
+                    assets/images/paintsculptures.jpg 1960w"
+                    sizes="(max-width: 500px) calc(100vw - 6vw), (max-width: 700px) calc(100vw - 6vw), (max-width: 1440px) calc((100vw - 6vw)/2)"
+                />
+            </div>
+            <h2 class="cardName">Painting and Sculpture by Living Americans</h2>
+            <div class="cardInfo">
+                <p>Dec 3, 1930 - Jan 20, 1931<br/>Resolution Change</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

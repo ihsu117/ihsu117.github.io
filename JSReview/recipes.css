@@ -1,0 +1,35 @@
+body {
+  background-color: #cccccc;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.title2 {
+  font-size: 2rem;
+  clear: left;
+}
+
+.recipes {
+  width: 75%;
+  padding: 1.5em;
+  margin: 2em auto;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.property-name {
+  font-size: 1.5rem;
+}
+.recipe-photo {
+  float: right;
+  width: 40%;
+  margin-left: 2em;
+}
