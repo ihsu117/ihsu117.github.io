@@ -100,28 +100,42 @@ function formatDate(dateString) {
 //start the app by rendering the past vacations on load, if any.
 renderPastVacations();
 
-if("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then((registration) => {
-        console.log("SW registered w/ scope: ", registration.scope);
-    }).catch((error) => {
-        console.log("Registration failed: ", error);
-    });
+// if("serviceWorker" in navigator) {
+//     navigator.serviceWorker.register("sw.js").then((registration) => {
+//         console.log("SW registered w/ scope: ", registration.scope);
+//     }).catch((error) => {
+//         console.log("Registration failed: ", error);
+//     });
+// };
+
+// navigator.serviceWorker.addEventListener("message", (event) => {
+//     console.log("Received a message from SW: ", event.data);
+
+//     if(even.datatype === "update") {
+//         console.log("update Received", event.data.data);
+//     };
+// });
+
+// function sendMessageToSW(message) {
+//     if(navigator.serviceWorker.controller) {
+//         navigator.serviceWorker.controller.postMessage(message);
+//     };
+// };
+
+// document.getElementById("sendButton").addEventListener("click", () => {
+//     sendMessageToSW({type: "action", data: "Button clicked"});
+// });
+
+const channel = new BroadcastChannel("pwa_channel");
+
+channel.onmessage = (event) => {
+    console.log("Message Received");
+    document.getElementById("message").insertAdjacentElement("beforeend", `<p>Received: ${event.data}</p>`);
 };
 
-navigator.serviceWorker.addEventListener("message", (event) => {
-    console.log("Received a message from SW: ", event.data);
-
-    if(even.datatype === "update") {
-        console.log("update Received", event.data.data);
-    };
+document.getElementById("sendButton").addEventListener("click", () => {
+    const message = "Hello PWA!";
+    channel.postMessage(message);
+    console.log("Sent message from PWA: ", message);
 });
 
-function sendMessageToSW(message) {
-    if(navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage(message);
-    };
-};
-
-document.getElementById("snedButton").addEventListener("click", () => {
-    sendMessageToSW({type: "action", data: "Button clicked"});
-});

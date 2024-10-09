@@ -15,7 +15,7 @@ const CACHE_NAME = `vacation-tracker-${VERSION}`;
 /handle the install event and retrieve and store the file listed for the cache/
 self.addEventListener("install", (event)=>{
     event.waitUntil(
-        (async ()=>{
+        (async()=>{
             const cache = await caches.open(CACHE_NAME);
             cache.addAll(APP_STATIC_RESOURCES);
         })()
@@ -92,3 +92,11 @@ self.addEventListener("message", (event) => {
         data: "Message received by SW",
     })
 });
+
+const channel = new BroadcastChannel("pwa_channel");
+
+channel.onmessage = (event) => {
+    console.log("Message Received in SW");
+
+    channel.postMessage("Service Worker receeived:" + event.data);
+};
