@@ -10,7 +10,7 @@ const APP_STATIC_RESOURCES = [
     "assets/icons/icon-512x512.png"
 ];
 
-const CACHE_NAME = vacation-tracker-{VERSION};
+const CACHE_NAME = `vacation-tracker-${VERSION}`;
 
 /handle the install event and retrieve and store the file listed for the cache/
 self.addEventListener("install", (event)=>{

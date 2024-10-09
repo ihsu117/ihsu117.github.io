@@ -95,7 +95,7 @@ function formatDate(dateString) {
     const date = new Date(dateString);
 
     return date.toLocaleDateString("en-us",{timeZone: "UTC"});
-}
+};
 
 //start the app by rendering the past vacations on load, if any.
 renderPastVacations();
@@ -106,4 +106,22 @@ if("serviceWorker" in navigator) {
     }).catch((error) => {
         console.log("Registration failed: ", error);
     });
-}
+};
+
+navigator.serviceWorker.addEventListener("message", (event) => {
+    console.log("Received a message from SW: ", event.data);
+
+    if(even.datatype === "update") {
+        console.log("update Received", event.data.data);
+    };
+});
+
+function sendMessageToSW(message) {
+    if(navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage(message);
+    };
+};
+
+document.getElementById("snedButton").addEventListener("click", () => {
+    sendMessageToSW({type: "action", data: "Button clicked"});
+});
