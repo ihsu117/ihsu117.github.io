@@ -99,3 +99,11 @@ function formatDate(dateString) {
 
 //start the app by rendering the past vacations on load, if any.
 renderPastVacations();
+
+if("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").then((registration) => {
+        console.log("SW registered w/ scope: ", registration.scope);
+    }).catch((error) => {
+        console.log("Registration failed: ", error);
+    });
+}

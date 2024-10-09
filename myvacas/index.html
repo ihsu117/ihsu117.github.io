@@ -35,5 +35,18 @@
     </section>
 
     <script src="app.js" defer></script>
+    <script>
+      //with no error checking or once the app is debugged:
+      if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("./sw.js").then(
+          (registration) => {console.log("service work registration successful", registration);},
+          (error) =>{
+            console.log("service work registration failed:", registration);
+          }
+        )
+      }else{
+        console.error("Service workers are not supported");
+      }
+    </script>
   </body>
 </html>
