@@ -73,9 +73,9 @@ self.addEventListener("fetch", (event)=>{
 });//fetch
 
 function sendMessageToPWA(message) {
-    self.clients.matchAll().then((clients) => {
-        clients.foreach((cl) => {
-            cl.postMessage(message);
+    self.clients.matchAll().then((cl) => {
+        cl.forEach((c) => {
+            c.postMessage(message);
         })
     });
 };
@@ -100,3 +100,62 @@ channel.onmessage = (event) => {
 
     channel.postMessage("Service Worker receeived:" + event.data);
 };
+
+//open or create db
+let db;
+const dbName = "SyncDB";
+const request = indexedDB.open(dbName, 1); //name and version need to match app.js
+
+request.onerror = function (event) {
+    console.error("Database error: " + event.target.error);
+};
+
+request.onsuccess = function (event) {
+    db = event.target.result;
+    console.log("Database opened successfully in SW");
+};
+
+self.addEventListener("sync", function(event) {
+    if (event.tag === "send-data") {
+        event.waitUntil(sendDataToServer());
+    }
+});
+
+function sendDataToServer() {
+    return getAllPendingData().then(function(dataList) {
+            return Promise.all(
+                dataList.map(function(item) {
+                    return new Promise((resolve,reject) => {
+                        setTimeout(()=>{
+                            if(Math.random() > 0.1) {
+                                console.log("Data sent successfully: ", item.data);
+                                resolve(item.id);
+                                reject(new Error("Failed to send data"));
+                            }
+                        },1000);
+                    })
+                    .then(function() {
+                        //on success, remove item
+                        return removeDdataFromIndexedDB(item.id);
+                    });
+                })
+            )
+        }
+    )
+};
+
+function getAllPendingData() {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(["pendingData"], "readonly");
+        const objectStore = transaction.objectStore('pendingData');
+        const request = objectStore.getAll();
+
+        request.onsuccess = function(event) {
+            resolve(event.target.result);
+        }
+
+        request.onerror = function(event) {
+            reject("Error fetching data"+event.target.error);
+        }
+    })
+}

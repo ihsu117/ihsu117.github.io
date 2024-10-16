@@ -139,3 +139,80 @@ document.getElementById("sendButton").addEventListener("click", () => {
     console.log("Sent message from PWA: ", message);
 });
 
+let db;
+const dbName = "SyncDB";
+const request = indexedDB.open(dbName, 1);
+
+request.onerror = function (event) {
+    console.error("Database error: " + event.target.error);
+}
+
+request.onsuccess = function (event) {
+    db = event.target.result;
+    console.log("Database opened successfully");
+}
+
+request.onupgradeneeded = function (event) {
+    const objectStore = db.createObjectStore("pendingData", 
+    {
+        keyPath: "id",
+        autoIncrement: true,
+    });
+}
+
+//Adding data to DB, must use transaction
+function addDataToIndexedDB(data) {
+    return new Promise((resolve, reject)=> {
+        const transaction = db.transaction(["pendingData"], "readwrite");
+        const objectStore = trasnaction.objectStore("pendingData");
+        const request = objectStore.add({data: data});
+
+        request.onsuccess = function(event) {
+            resolve();
+        }
+
+        request.onerror = function(evennt) {
+            reject("Error storing data: " + event.target.error);
+        }
+    });
+}
+
+document.getElementById("dataForm").addEventListener("submit", function(event){
+    event.preventDefault();
+
+    const data = document.getElementById("dataInput").value;
+
+    //Chceck to see if both sw and SyncManager is available
+    if("serviceWorker" in navigator && "SyncManager" in window) {
+    //we're good add data to db for offline use
+        addDataToIndexedDB(data)
+        .then(() => navigator.serviceWorker.ready) //wait for sw to be ready
+        .then((registration) => {
+            //registeers a syunc event for when the device becomes online
+            return registration.sync.register("send-data");
+        })
+        .then(() => {
+            document.getElementById("status").textContent = "Sync Registered. Data will be sent when online";
+        })
+    } else {
+        sendData(data).then((result) => {
+            document.getElementById("status").textContent = result;
+        }).catch((error) => {
+            document.getElementById("status").textContent = error.message;
+        });
+    }
+});
+
+function sendData(data) {
+    console.log("Attempting to send data:", data);
+
+    return new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            if(Math.random() > 0.5) {
+                resolve("Data sent successfully");
+            } else {
+                reject(new Error("Failed to send data"));
+            }
+        },1000);
+    });
+}
