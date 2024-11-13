@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/out.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <title>Favorite Attractions</title>
+
+    <!--- Register SW --->
+    <script>
+        if("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("./sw.js").then((registration) => {
+                console.log("SW registration successful", registration);
+            }, (error) => {
+                console.log("SW registration failed: ", error);
+            })
+        } else {
+            console.error("Service Workers not supported!");
+        }
+    </script>
+</head>
+<body class="min-h-full bg-[#0f0f0f]" onload="loadFaves()">
+    <section class="h-[30vh] w-full bg-[url('../images/banner-mobile.jpg')] bg-cover relative sm:bg-[url('../images/banner.jpg')] bg-bottom">
+        <div class="h-full w-full bg-gradient-to-b from-[#0f0f0f] from-[1%] via-transparent to-[92%] to-[#0f0f0f]">
+            <div class="absolute top-[60%] translate-y-[-60%] left-[50%] translate-x-[-50%]">
+                <h1 class="text-[#ebe6dd] text-[clamp(64px,10vw,128px)] tracking-[0.1em] font-playfair [text-shadow:_2px_2px_0_rgb(0_0_0)] italic">Montreal</h1>
+            </div>
+        </div>
+    </section>
+    <div class="p-3 px-[clamp(12px,5vw,24px)] text-[#d1cdc5] lg:flex lg:flex-col lg:items-center">
+        <div class="sm:flex lg:w-[80%] items-baseline justify-between">
+            <h1 class="text-3xl font-oswald sm:inline-block">Favorites</h1>
+            <div class="hidden sm:inline-flex h-full gap-1">
+                <a class="inline-flex items-center justify-center h-full w-[70px] bg-[#d1cdc5] text-black rounded-md" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>                  
+                </a>
+                <div class="border-[#1f1f1d] border-l-2 h-[60%]"></div>
+                <a class="inline-flex items-center justify-center h-full w-[70px] bg-[#d1cdc5] text-black rounded-md" href="favorites.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div id="favList" class="flex flex-col items-center mt-8 gap-4 w-full md:flex-row md:flex-wrap md:justify-center md:gap-8"></div>
+        <div class="card hidden">
+            <span class="tag hidden"></span>
+        </div>
+    </div>
+    <section id="mobNavBar" class="sm:hidden fixed bottom-0 h-[clamp(45px,8%,50px)] w-full z-50 flex items-center justify-center my-2">
+        <div class="bg-[#d1cdc5] h-full w-[90%] rounded-xl flex items-center justify-evenly">
+            <a class="inline-flex items-center justify-center h-full" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>                  
+            </a>
+            <div class="border-[#1f1f1d] border-l-2 h-[60%]"></div>
+            <a class="inline-flex items-center justify-center h-full" href="favorites.html">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+            </a>
+        </div>
+    </section>
+    <script src="app.js" defer></script>
+</body>
+</html>

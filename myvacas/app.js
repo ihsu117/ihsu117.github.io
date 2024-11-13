@@ -171,7 +171,7 @@ function addDataToIndexedDB(data) {
             resolve();
         }
 
-        request.onerror = function(evennt) {
+        request.onerror = function(event) {
             reject("Error storing data: " + event.target.error);
         }
     });

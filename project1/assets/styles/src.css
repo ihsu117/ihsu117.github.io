@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply w-[clamp(300px,70%,400px)] aspect-[2/1] rounded-xl shadow-md 
+        shadow-slate-800 overflow-hidden text-black relative bg-gradient-to-b from-transparent 
+        from-[70%] to-[99%] to-[#d1cdc5] md:w-[clamp(380px,45%,600px)];
+    }
+
+    .card > img {
+        @apply absolute -z-10 top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%];
+    }
+
+    .card > div {
+        @apply h-full w-full flex flex-col justify-end;
+    }
+
+    .card > div > button {
+        @apply aspect-square absolute top-2 right-2;
+    }
+
+    .card > div > button > svg:hover {
+        @apply fill-yellow-500;
+    }
+
+    .card > div > h2 {
+        @apply font-semibold font-oswald p-2 z-0 text-base hover:cursor-pointer hover:text-[#575654];
+    }
+
+    .tag {
+        @apply inline-flex items-center rounded-md bg-green-100 text-green-700 border-green-700 border-2 font-medium text-xs px-2;
+    }
+}

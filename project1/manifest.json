@@ -1,0 +1,11 @@
+{
+    "name": "Sightseeing: Montreal App",
+    "short_name": "SMA",
+    "description": "Check out some great attractions in Montreal!",
+    "start_url": "",
+    "theme_color": "#1976d2",
+    "background_color": "#fafafa",
+    "display": "standalone",
+    "icons": []
+  }
+  

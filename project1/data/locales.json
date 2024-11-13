@@ -1,0 +1,84 @@
+{
+    "locales": [
+        {
+            "id" : 1,
+            "name": "The Montreal Museum of Fine Art",
+            "tags" : ["Museum", "Arts"],
+            "description": "Founded in 1860, the MMFA is one of the 10 most-visited museums in North America. It's a grand and comprehensive institution, on the historic Golden Square Mile stretch of Sherbrooke Street, with a heritage collection of some 43,000 works, many of them displayed throughout the museum's five pavilions.",
+            "address": "1380 Sherbrooke St W, Montreal, Quebec H3G 1J5",
+            "images": "./assets/images/mmfa_600.jpg 600w,./assets/images/mmfa.jpg 1920w"
+        },
+        {
+            "id": 2,
+            "name": "Montreal Biodome",
+            "tags": ["Museum", "Natural Sciences"],
+            "description": "An oasis in the heart of the city of Montréal, the Biodome offers an immersive visit through five ecosystems of the Americas where animals and plants can be observed. It is one of the few places in the world to reproduce so faithfully the complexity of the natural environment and the interactions between animal and plant species.",
+            "address": "4777 Pierre-de Coubertin Ave, Montreal, Quebec H1V 1B3",
+            "images": "./assets/images/biodome_600.jpg 600w,./assets/images/biodome.jpg 1200w"
+        },
+        {
+            "id": 3,
+            "name": "Notre-Dame Basilica",
+            "tags": ["Cathedral", "Landmark", "Religious"],
+            "description": "Montreal's oldest Catholic church, built in 1656, is known for its intricately designed interior, which includes stained glass chronicling the history of the city.",
+            "address": "110 Notre-Dame St W, Montreal, Quebec H2Y 1T1",
+            "images": "./assets/images/notredame_600.jpg 600w,./assets/images/notredame.jpg 2560w"
+        },
+        {
+            "id": 4,
+            "name": "Montreal Botanical Garden",
+            "tags": ["Gardens", "Botany"],
+            "description": "Recognized as one of the world’s finest, the Montréal Botanical Garden is a true living museum featuring plants from every part of the globe. This jewel in the city’s crown, founded in 1931, covers 75 hectares and features some 20 thematic gardens, a vast arboretum, the Frédéric Back Tree Pavilion and 3 exceptional cultural gardens: the Chinese Garden, Japanese Garden and First Nations Garden.",
+            "address": "4101 Sherbrooke St E, Montreal, Quebec H1X 2B2",
+            "images": "./assets/images/botanicalgarden_600.jpg 600w,./assets/images/botanicalgarden.jpg 1500w"
+        },
+        {
+            "id": 5,
+            "name": "Jean-Talon Market",
+            "tags": ["Farmers Market"],
+            "description": "Bustling with activity all year round since 1933, this charming market in Montreal is a favorite with both locals and travelers. Expect an overflowing selection of local specialties and a cornucopia of fresh produce ranging from exquisite cheeses, sausages, and smoked meats to fresh fruits and vegetables. Don’t leave without purchasing some local jam, cider, and maple products as souvenirs. Beyond just a grocery pit-stop, Jean-Talon Market is also renowned for its gourmet workshops and culinary demonstrations. The markets are open daily and get busier on the weekend.",
+            "address": "7070 Henri Julien Ave, Montreal, Quebec H2S 3S3",
+            "images": "./assets/images/jtmarket_600.jpg 600w,./assets/images/jtmarket.jpg 1280w"
+        },
+        {
+            "id": 6,
+            "name": "Underground City",
+            "tags": ["Shopping Mall"],
+            "description": "Montreal's Underground City, or RÉSO, is an impressive subterranean pedestrian network that spans 20 miles of tunnels. The network is largely climate-controlled, making it a perfect escape from Montreal's harsh weather conditions, especially during winter. You can find over 1,600 shops and facilities within the city and it connects three major shopping malls, hotels, offices, and more. It's also a great way to get to the metro, or spots like Place des Arts and Chinatown.",
+            "address": "747 Rue du Square-Victoria #247, Montreal, Quebec H2Y 3Y9",
+            "images": "./assets/images/undercity_600.jpg 600w,./assets/images/undercity.jpg 1200w"
+        },
+        {
+            "id": 7,
+            "name": "Old Montreal",
+            "tags": ["Neighborhood", "Landmark"],
+            "description": "Old Montreal is a historic neighborhood in Canada with a charming Parisian flair. Be transported back in time as you wander down the cobblestone streets and admire the stunning architecture. Check out the Bonsecours Market for some unique shopping, stroll along St. Paul Street, and visit the Notre-Dame Basilica of Montreal to admire the incredible stained glass windows. You can also head to the old port for a Ferris wheel ride, zipline, or cruise. Take a walking tour to learn more about its history or a ghost tour to explore the neighborhood after dark.",
+            "address": "Old Montreal, Montreal, Quebec",
+            "images": "./assets/images/oldmontreal_600.jpg 600w,./assets/images/oldmontreal.jpg 1600w"
+        },
+        {
+            "id": 8,
+            "name": "Mount Royal Park",
+            "tags": ["Parks"],
+            "description": "This park is one of Montreal's largest greenspaces and is a great place for admiring a wide variety of flora and fauna. Designed by Frederick Law Olmsted, the same person behind New York's Central Park, Mount Royal Park boasts miles of trails and superb views of the city. Here, you can stroll down the tree-lined paths and recharge with a picnic on the grass by Beaver Lake.",
+            "address": "1260 Chem. Remembrance, Montréal, QC H3H 1A2",
+            "images": "./assets/images/royalpark_600.jpg 600w,./assets/images/royalpark.jpg 1600w"
+        },
+        {
+            "id": 9,
+            "name": "Rue St-Paul",
+            "tags": ["Landmark"],
+            "description": "The oldest and one of the prettiest of Montreal's streets is home to the Bonsecours Market and the Notre-Dame De-Bonsecours Chapel.",
+            "address": "Rue St-Paul, Montreal, Quebec",
+            "images": "./assets/images/ruestpaul_600.jpg 600w,./assets/images/ruestpaul.jpg 1600w"
+        },
+        {
+            "id": 10,
+            "name": "Old Port of Montreal",
+            "tags": ["Neighborhood"],
+            "description": "The Old Port of Montreal is one of the most popular tourist attraction in the country with more than 50 activities and 6 millions visitors every year!",
+            "address": "Old Port of Montreal, Montreal, Quebec",
+            "images": "./assets/images/oldport_600.jpg 600w,./assets/images/oldport.jpg 1600w"
+        }   
+    ]
+}
